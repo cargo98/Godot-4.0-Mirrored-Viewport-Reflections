@@ -15,4 +15,4 @@ To use in your own scene:
 
 Unforunately this only works in perspective view, as it has some weird warping effects in orthographic, but I am looking to fix this.
 
-This is essentially a port of @JFonS' [mirror]([https://www.google.com](https://github.com/JFonS/godot-mirror-example)) for godot 4.0 
+This is essentially a port of @JFonS' [mirror](https://github.com/JFonS/godot-mirror-example) for godot 4.0 
