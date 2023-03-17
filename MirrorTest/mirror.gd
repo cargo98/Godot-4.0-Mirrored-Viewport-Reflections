@@ -44,10 +44,8 @@ func _process(delta):
 	mirror_camera_transform.origin = mirrored_camera_position;
 	# looking perpedicularly into the relfection plane
 	mirror_camera_transform = mirror_camera_transform.looking_at(projection_position, global_transform.basis.y.normalized())
-	# set mirror camera transform and flip x basis
-	print(mirror_camera_transform.basis.x)
+	# set mirror camera transform
 	mirror_camera.set_global_transform(mirror_camera_transform)
-	print(mirror_camera_transform.basis.x)
 	# Compute the tilting offset for the frustum
 	var offset = main_camera_origin * global_transform
 	offset = Vector2(offset.x, offset.y)
