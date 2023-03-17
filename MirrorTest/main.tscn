@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://cnemxd1xqawvr"]
+
+[ext_resource type="Script" path="res://Camera3D.gd" id="1_3gmfp"]
+[ext_resource type="PackedScene" uid="uid://r14or6yw4tbl" path="res://mirror.tscn" id="1_u8ta0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bpxld"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cp6fs"]
+albedo_color = Color(1, 0.0705882, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_go3ox"]
+size = Vector2(30, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qurcs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ragq8"]
+albedo_color = Color(0.619608, 0, 0.309804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v5f8s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5cn0"]
+albedo_color = Color(0, 0.168627, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sbcg6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ys6lu"]
+albedo_color = Color(1, 1, 0, 1)
+
+[node name="Spatial" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.867681, 0)
+script = ExtResource("1_3gmfp")
+
+[node name="CameraIndicator" type="MeshInstance3D" parent="Camera3D"]
+mesh = SubResource("BoxMesh_bpxld")
+surface_material_override/0 = SubResource("StandardMaterial3D_cp6fs")
+
+[node name="Rotator" type="Node3D" parent="."]
+
+[node name="Mirror" parent="Rotator" instance=ExtResource("1_u8ta0")]
+transform = Transform3D(-0.999376, -0.000770926, -0.0353077, 0.000756796, -1, 0.000413744, -0.035308, 0.000386779, 0.999376, -0.259874, 0.189459, -3.65332)
+
+[node name="Scene" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.423038, 0)
+mesh = SubResource("PlaneMesh_go3ox")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Scene"]
+omni_range = 16.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scene"]
+transform = Transform3D(0.43887, -0.00114944, 0.680739, 0.000433309, 0.499997, 0.00456128, -0.239568, -0.00120134, 1.24707, 0, 0.854293, -3.38847)
+mesh = SubResource("BoxMesh_qurcs")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ragq8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scene"]
+transform = Transform3D(0.5, 0, 0, 0, 0.438523, -0.960814, 0, 0.240204, 1.75409, -1.22805, 1.89189, -3.5264)
+mesh = SubResource("BoxMesh_v5f8s")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_e5cn0")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72176, 0.207566, 0)
+mesh = SubResource("BoxMesh_sbcg6")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ys6lu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene"]
+transform = Transform3D(1, 0, 0, 0, 0.56961, 0.821916, 0, -0.821916, 0.56961, 0, 5.89792, 0)
